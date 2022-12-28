@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.text-center {
+    text-align: center;
+}
+
+:root {
+    --app-primary-color: #f1f6ff;
+    --app-white-color: #ffff;
+    --app-dark-color: #0000;
+    --app-brown-color: #4d3941;
+    --app-danger-color: #df2e34;
+    --app-success-color: #34f234;
+    --app-warning-color: #ffb818;
+    --app-button-color: #1b2244;
+}

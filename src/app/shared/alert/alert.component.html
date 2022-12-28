@@ -1,0 +1,22 @@
+<div class="alert-container">
+  <div [class]="'alert ' + alertController.animationAlert">
+    <div class="alert-content">
+      <div class="icon" [style.border-color]="
+          'var(--app-' + alertController.alertInfo.iconColor + '-color)'
+        ">
+        <em [class]="alertController.alertInfo.iconName" [style.color]="
+            'var(--app-' + alertController.alertInfo.iconColor + '-color)'
+          "></em>
+      </div>
+      <div class="title">{{ alertController.alertInfo.title }}</div>
+      <div class="description" [innerHTML]="alertController.alertInfo.msg"></div>
+
+      <div class="footer">
+        <div *ngFor="let button of alertController.alertInfo.buttons" (click)="button.buttonHandler()" class="button">
+          <em *ngIf="button.buttonIcon" [class]="button.buttonIcon"></em>
+          {{button.buttonText }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<div>
+    <h1 class="title">Genere su turno</h1>
+    <p class="text-center">Recuerde completar todos los campos</p>
+</div>
+<div class="card m-4 ">
+    <div class="card-body" [formGroup]="form">
+        <table class="center">
+            <tbody style="align-items: center;">
+                <tr>
+                    <td>Fecha Inicio:</td>
+                    <td><input formControlName="fecha_inicio" type="date" id="start" name="trip-start"
+                            value="2018-07-22" min="2018-01-01"></td>
+                </tr>
+                <tr>
+                    <td>Fecha Fin</td>
+                    <td><input formControlName="fecha_fin" type="date" id="start" name="trip-start" value="2018-07-22"
+                            min="2018-01-01"></td>
+                    <td style="padding-left: 100px;">
+                        <button type="submit" [disabled]="!isValidForm()" class="btn btn-primary"
+                            (click)="botonGenerarTurno()">Generar
+                            Turnos</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Servicio</td>
+                    <td><select formControlName="servicio">
+                            <!-- <option *ngFor="let servicio of servicios_lista" [ngValue]="servicio.id_servicio">
+                                {{servicio.nom_servicio}}</option> -->
+                                <option [value]="item" *ngFor="let item of lista">{{item}}</option>
+                        </select></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<table class="table table-striped m-2">
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora Inicio</th>
+            <th scope="col">Hora Fin</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of turnos_lista">
+            <th>{{this.fecha_real}}</th>
+            <td>{{item.hora_inicio | date: 'shortTime'}}</td>
+            <td>{{item.hora_fin | date: 'shortTime'}}</td>
+            <td *ngIf="item.estado == 1">Activo</td>
+            <td *ngIf="item.estado == 0">Inactivo</td>
+        </tr>
+    </tbody>
+</table>
